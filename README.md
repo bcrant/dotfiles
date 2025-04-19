@@ -110,8 +110,8 @@ Host *
 - Installing Node Version Manager 
 - Historically, I have also installed nvm from source.
 - Going to try through Homebrew...
-- `brew install nvm`
-- `nvm ls-remote`
+- `brew install fnm`
+- `fnm completions --shell`
 - `nvm install --lts` or preferred even numbered version
 - Install yarn
 - `npm install --global yarn`
@@ -149,27 +149,34 @@ Plugins:
 
 ### CLIs
 
-- atom
-  - Set atom as default app for most filetypes
-  - TODO: Atom being sunset 12/15/2022
+- autoconf
 - awscli
-- aws-cdk
-- aws-iam-authenticator
+- bash-completion
+- ca-certificates
 - coreutils
 - csvkit
+- docker
+- docker-buildx
+- docker-completion
 - ffmpeg
+- fnm
 - helm
 - jq
 - mcfly
 - mp4box
 - npam
+- openssl
 - rust
 - telnet
 - terragrunt
 - tfenv
+- tfsec
+- tldr
 - tree
 - wget
 - vlc
+- zsh-completions
+- zstd
 
 `brew install atom awscli aws-cdk csvkit ffmpeg jq mcfly npam telnet tree wget`
 
