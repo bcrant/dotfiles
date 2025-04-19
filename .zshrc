@@ -31,9 +31,6 @@ export PATH="/opt/homebrew/sbin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-export PATH="$HOME/.yarn/bin:$PATH"
-
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk@11/11.0.19/libexec/openjdk.jdk/Contents/Home"
 export SPARK_HOME="/opt/homebrew/Cellar/apache-spark/3.4.0/libexec/"
 export PATH="$JAVA_HOME:$SPARK_HOME:$PATH"
@@ -86,7 +83,6 @@ alias zipenvs='mkdir -p envs && for f in $(ls -a | grep ".env") ; do cp $f ./env
 #
 # Load Interpreters and mcfly
 #
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(mcfly init zsh)"
