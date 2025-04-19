@@ -70,6 +70,7 @@ alias .....="cd ../../../.."
 
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
+alias ws="cd ~/workspace"
 
 alias gb="git branch -vv"
 alias gl='git log \
