@@ -112,7 +112,7 @@ Host *
 - Going to try through Homebrew...
 - `brew install fnm`
 - `fnm completions --shell`
-- `nvm install --lts` or preferred even numbered version
+- `fnm install --lts` or preferred even numbered version
 - Install yarn
 - `npm install --global yarn`
 
