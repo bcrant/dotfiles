@@ -112,8 +112,8 @@ Host *
 - Going to try through Homebrew...
 - `brew install fnm`
 - `fnm completions --shell`
-- `fnm install --lts` or preferred even numbered version
-- Install yarn
+- Install long term stable version
+- Install globals like typescript yarn
 - `npm install --global yarn`
 
 
