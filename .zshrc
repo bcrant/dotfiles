@@ -124,7 +124,7 @@ eval "$(direnv hook zsh)"
 # Load Version Managers
 #
 # NodeJS = fnm
-# Python = pyenv
+# Python = uv
 #
 eval "$(fnm env --log-level=quiet --use-on-cd)"
 eval "$(uv generate-shell-completion zsh)"
