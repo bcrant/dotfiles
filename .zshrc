@@ -31,6 +31,7 @@ setopt SHARE_HISTORY
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="~/.local/bin:$PATH"
 
 #
 # Golang
@@ -48,16 +49,10 @@ export PATH="/opt/homebrew/sbin:$PATH"
 # export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 #
-# Python
-#
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-#
 # Ruby
 #
-export RBENV_ROOT="$HOME/.rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
+# export RBENV_ROOT="$HOME/.rbenv"
+# export PATH="$RBENV_ROOT/bin:$PATH"
 
 
 #
@@ -72,6 +67,8 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias ws="cd ~/workspace"
 
+alias curl="curl -w '\n'"
+
 alias gb="git branch -vv"
 alias gl='git log \
 	--pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" \
@@ -79,9 +76,11 @@ alias gl='git log \
 	--date=short'
 alias gr="git reset --soft HEAD~1"
 alias gs="git status"
+alias rmgone="git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D"
 
-alias grepjs='grep --exclude-dir "*/node_modules" --exclude "*.json"'
-alias greptf='grep --exclude-dir "*/.terraform/*" --exclude "*.md" --exclude "*.y*ml" --exclude "*examples*"'
+alias grepjs='grep -I --exclude-dir "*/node_modules" --exclude "*.json"'
+alias greppy='grep -I --exclude-dir "*/.venv/*"'
+alias greptf='grep -I --exclude-dir "*/.terraform/*" --exclude "*.md" --exclude "*.y*ml" --exclude "*examples*"'
 
 alias k="kubectl"
 alias kctx='kubectl config get-contexts'
@@ -94,6 +93,8 @@ alias lsd='ls -la --color | grep "^d"'
 alias lscpu="sysctl -a | grep cpu | grep hw"
 alias nproc="sysctl -n hw.physicalcpu"
 
+alias pq="parquet-tools"
+
 alias loadenv='export $(grep -v "^#" .env | xargs)'
 alias rmds='find . -name ".DS_Store" -delete'
 alias s2d='TZ=utc date -j -r '
@@ -103,11 +104,10 @@ alias zipenvs='mkdir -p envs && for f in $(ls -a | grep ".env") ; do cp $f ./env
 #
 # Constants
 #
-export AWS_REGION="us-west-2"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export PS4='+(%x:%I): %N(%i): '
-
+export UV_VENV_CLEAR=1
 
 #
 # Load Auto Completions
@@ -115,16 +115,19 @@ export PS4='+(%x:%I): %N(%i): '
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
+#
+# Load dotenv
+#
+eval "$(direnv hook zsh)"
 
 #
 # Load Version Managers
 #
 # NodeJS = fnm
-# Python = pyenv
+# Python = uv
 #
 eval "$(fnm env --log-level=quiet --use-on-cd)"
-eval "$(pyenv init --no-push-path --no-rehash --path zsh)"
-
+eval "$(uv generate-shell-completion zsh)"
 
 #
 # Load ZSH History Manager
@@ -133,3 +136,4 @@ export MCFLY_RESULTS_SORT=LAST_RUN
 eval "$(mcfly init zsh)"
 
 typeset -aU path
+
